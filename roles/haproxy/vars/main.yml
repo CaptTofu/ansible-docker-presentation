@@ -1,0 +1,4 @@
+---
+image: haproxy
+type: haproxy
+containers_count: 4

@@ -1,0 +1,3 @@
+- name: docker image control
+  docker: image="{{repository_name}}/{{ image }}" name="{{ type }}_{{ item }}" state={{ docker_state }}
+  with_sequence: count={{ containers_count }}

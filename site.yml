@@ -1,0 +1,14 @@
+- hosts: docker 
+  roles:
+  - common
+  - web 
+
+- hosts: docker
+  roles:
+  - common
+  - db 
+
+- hosts: docker
+  roles:
+  - common
+  - haproxy

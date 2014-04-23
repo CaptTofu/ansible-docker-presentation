@@ -1,0 +1,4 @@
+---
+image: pxc 
+type: db
+containers_count: 3

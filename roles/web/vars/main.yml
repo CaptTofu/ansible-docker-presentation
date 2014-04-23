@@ -1,0 +1,4 @@
+---
+image: apache 
+type: web
+containers_count: 8

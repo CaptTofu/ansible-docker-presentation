@@ -1,0 +1,4 @@
+---
+- hosts: docker 
+  roles:
+  - image_builder 

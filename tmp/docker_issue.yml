@@ -1,0 +1,13 @@
+- hosts: localhost 
+  vars:
+    start_containers_count: 4
+  tasks:
+  - name: run docker containers 
+    docker: image=df02bd73464a count={{ start_containers_count }}
+#    with_sequence: count={{ start_containers_count }}
+  - name: print debug
+    #debug: msg="docker_containers[{{item}}]['NetworkSettings']['IPAddress']}}"
+    debug: msg="{{item['NetworkSettings']['IPAddress']}}"
+    #debug: msg="{{docker_containers}}"
+    with_items: docker_containers
+    #with_sequence: count={{ start_containers_count }}
