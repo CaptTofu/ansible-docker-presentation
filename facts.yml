@@ -1,0 +1,8 @@
+- name: Gather info about containers
+  hosts: docker
+  gather_facts: True
+  tasks:
+    - name: Get facts about containers
+      local_action:
+        module: docker_facts
+        name: lonely_einstein

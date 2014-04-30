@@ -1,0 +1,11 @@
+- name: Gather info about containers
+  hosts: docker
+  gather_facts: True
+  tasks:
+    - name: Get facts about containers
+      local_action:
+        module: docker_facts
+
+    - name: another facts test
+      debug: msg="Container {{ item }}"
+      with_dict: docker_containers

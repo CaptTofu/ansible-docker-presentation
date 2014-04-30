@@ -1,12 +1,12 @@
-- hosts: docker 
+- hosts: docker
   roles:
   - common
-  - web 
+  - web
 
 - hosts: docker
   roles:
   - common
-  - db 
+  - db
 
 - hosts: docker
   roles:
