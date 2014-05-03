@@ -1,14 +1,20 @@
 - hosts: docker
+  vars:
+    containers_count: 5
   roles:
   - common
   - web
 
 - hosts: docker
+  vars:
+    containers_count: 3
   roles:
   - common
   - db
 
 - hosts: docker
+  vars:
+    containers_count: 2
   roles:
   - common
   - haproxy

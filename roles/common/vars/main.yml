@@ -4,4 +4,4 @@ repository_name: capttofu
 docker_state: present
 web_containers_count: 8
 haproxy_containers_count: 4
-db_containers_count: 3 
+db_containers_count: 3

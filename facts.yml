@@ -5,4 +5,5 @@
     - name: Get facts about containers
       local_action:
         module: docker_facts
-        name: lonely_einstein
+        name: db_1
+        images: aff77f73ca3d
