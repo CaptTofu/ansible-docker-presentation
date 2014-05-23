@@ -1,11 +1,12 @@
 - name: Gather info about containers
-  hosts: docker
-  gather_facts: True
+  hosts: "{{ hosts }}" 
+  gather_facts: False 
   tasks:
     - name: Get facts about containers
       local_action:
+        docker_url: tcp://{{ inventory_hostname }}:4243
         module: docker_facts
 
     - name: another facts test
-      debug: msg="Container {{ item }}"
+      debug: msg="Host{{':'}} {{ inventory_hostname}} Container Name{{':'}} {{ item.key }} IP Address{{':'}} {{ item.value.docker_networksettings.IPAddress }} ssh port{{':'}} {{ item.value['docker_networksettings']['Ports']['22/tcp'][0]['HostPort'] }}"
       with_dict: docker_containers

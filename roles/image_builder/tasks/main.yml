@@ -1,8 +1,8 @@
 - name: check or build ssh image
-  docker_image: path="{{ images_source_path }}/ssh/" name="{{ repository_name }}/ssh" state=present
+  docker_image: path="{{ images_source_path }}/ssh/" docker_url=tcp://{{ inventory_hostname }}:4243 name="{{ repository_name }}/ssh" state=present
 - name: check or build apache image
-  docker_image: path="{{ images_source_path }}/apache/" name="{{ repository_name }}/apache" state=present
+  docker_image: path="{{ images_source_path }}/apache/" docker_url=tcp://{{ inventory_hostname }}:4243 name="{{ repository_name }}/apache" state=present
 - name: check or build haproxy image
-  docker_image: path="{{ images_source_path }}/haproxy/" name="{{ repository_name }}/haproxy" state=present
+  docker_image: path="{{ images_source_path }}/haproxy/" docker_url=tcp://{{ inventory_hostname }}:4243 name="{{ repository_name }}/haproxy" state=present
 - name: check or build percona XtraDB Cluster image
-  docker_image: path="{{ images_source_path }}/pxc/" name="{{ repository_name }}/pxc" state=present
+  docker_image: path="{{ images_source_path }}/pxc/" docker_url=tcp://{{ inventory_hostname }}:4243 name="{{ repository_name }}/pxc" state=present

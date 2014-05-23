@@ -1,0 +1,5 @@
+- name Create an inventory file example
+  hosts: "{{ hosts }}"
+  gather_facts: False
+  tasks:
+    - name: create inventory file

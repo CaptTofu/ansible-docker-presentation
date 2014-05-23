@@ -1,16 +1,13 @@
 - name: Gather info about containers
-  hosts: docker
+  hosts: "{{ hosts }}" 
   gather_facts: True
   tasks:
     - name: Get facts about containers
       local_action:
+        docker_url: tcp://{{ inventory_hostname }}:4243
         module: docker_facts
         images: all
 
-    - name: containers debug info
-      debug: msg="Container Name {{ item.key }} IP Address {{ item.value.docker_networksettings.IPAddress }}"
-      with_dict: docker_containers
-
     - name: images info
-      debug: msg="Image ID {{ item.key }} Author {{ item.value.docker_author }} Repo Tags {{ item.value.docker_repotags }}"
+      debug: msg="Image ID {{ item.key }} Repo Tags {{ item.value.docker_repotags }}"
       with_dict: docker_images

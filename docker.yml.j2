@@ -1,0 +1,17 @@
+
+---
+defaults:
+  host: unix:///var/run/docker.sock
+  version: 1.9
+  timeout: 60
+  private_ssh_port: 22
+  default_ip: 127.0.0.1
+
+hosts:
+{% for key in hostvars %}
+  - host: tcp://{{ key }}:4243
+    version: 1.9
+    timout: 60
+    default_ip: {{ hostvars[key]['ansible_default_ipv4']['address'] }}
+
+{% endfor %}

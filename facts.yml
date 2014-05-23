@@ -1,9 +1,12 @@
 - name: Gather info about containers
-  hosts: docker
+  hosts: "{{ hosts }}"
   gather_facts: True
   tasks:
     - name: Get facts about containers
       local_action:
+        docker_url: "tcp://{{ inventory_hostname }}:4243"
         module: docker_facts
-        name: db_1
-        images: aff77f73ca3d
+        id: "{{ container_id }}"
+
+    - name: print debug
+      debug: "{{ docker_facts }}"

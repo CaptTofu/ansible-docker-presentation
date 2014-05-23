@@ -1,3 +1,12 @@
+- name: set host variable
+  set_fact: hostn="{{ inventory_hostname | regex_replace('^(\w+)\..*$', '\\1') }}"
+
 - name: docker image control
-  docker: image="{{repository_name}}/{{ image }}" name="{{ type }}_{{ item }}" state={{ docker_state }}
+  local_action:
+    module: docker
+    docker_url: "tcp://{{ inventory_hostname }}:4243"
+    image: "{{repository_name}}/{{ image }}"
+    name: "{{ hostn }}_{{ type }}_{{ item }}"
+    state: "{{ docker_state }}"
+    publish_all_ports: yes
   with_sequence: count={{ containers_count }}

@@ -1,0 +1,8 @@
+---
+
+- name: Create a docker.yml file 
+  hosts: "{{ hosts }}" 
+  gather_facts: yes 
+  tasks:
+    - name: docker.yml template 
+      local_action: template src=docker.yml.j2 dest=./docker.yml

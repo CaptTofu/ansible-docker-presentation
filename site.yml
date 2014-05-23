@@ -1,20 +1,23 @@
-- hosts: docker
+- hosts: "{{ hosts }}"
+  gather_facts: False
   vars:
-    containers_count: 5
+    containers_count: 10 
   roles:
   - common
   - web
 
-- hosts: docker
+- hosts: "{{ hosts }}"
+  gather_facts: False
   vars:
     containers_count: 3
   roles:
   - common
   - db
 
-- hosts: docker
+- hosts: "{{ hosts }}"
+  gather_facts: False
   vars:
-    containers_count: 2
+    containers_count: 4 
   roles:
   - common
   - haproxy
